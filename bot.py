@@ -21,7 +21,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
 # start the bot
-print("Starting...")
+print("Iniciando...")
 try:
     apiid = config("APP_ID", cast=int)
     apihash = config("API_HASH")
@@ -30,20 +30,20 @@ try:
     tochnl = config("TO_CHANNEL", cast=int)
     datgbot = TelegramClient('bot', apiid, apihash).start(bot_token=bottoken)
 except:
-    print("Environment vars are missing! Kindly recheck.")
-    print("Bot is quiting...")
+    print("¡Faltan variables de entorno! Por favor, vuelva a comprobar.")
+    print("Bot está saliendo...")
     exit()
 
 
 @datgbot.on(events.NewMessage(pattern="/start"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-post bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time. Kindly deploy your own bot.\n\n[More bots](https://t.me/its_xditya)..", buttons=[Button.url("Repo", url="https://github.com/xditya/ChannelAutoForwarder"), Button.url("Dev", url="https://t.me/its_xditya")], link_preview=False)
+    await event.reply(f"Hi `{ok.user.first_name}`!\n\n¡Soy un bot de publicación automática de canales! ¡Lea /help para saber más!\n\nPuedo usar solo dos canales (un bot) a la vez para reenviar las publicaciones.\n\nBot creado y gestionado por [Skueletor](https://t.me/DKzippO)..", buttons=[Button.url("🍃 AsAEcos", url="http://t.me/AsAEcos"), Button.url("👤 Soporte", url="https://t.me/DKzippO")], link_preview=False)
 
 
 @datgbot.on(events.NewMessage(pattern="/help"))
 async def helpp(event):
-    await event.reply("**Help**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/xditya/ChannelAutoForwarder).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!\n\nLiked the bot? Drop a ♥ to @xditya_Bot :)")
+    await event.reply("**¡Bienvenido al apartado de ayuda!**\n\nEste bot enviará todas las publicaciones nuevas en un canal al otro canal. (¡Sin que aparezca que fue reenviado!)\nSolo se puede usar en dos canales a la vez, así que puede conseguir otro bot comprándolo [aquí](https:/t.me/DKzippO).\n\n¡Agrégame a ambos canales y hazme administrador en ambos, y todos los mensajes nuevos se publicarán automáticamente en el canal vinculado!\n\n ¿Te gustó el bot? Suelta un ♥ a @skueletor_bot :)")
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm)) 
 async def _(event): 
@@ -66,9 +66,10 @@ async def _(event):
             else:
                 await datgbot.send_message(tochnl, event.text, link_preview = False)
         except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+            print("TO_CHANNEL ID está mal o no puedo enviar mensajes allí (hazme administrador).")
 
 
-print("Bot has started.")
-print("Do visit @its_xditya..")
+print("El bot ha sido iniciado correctamente.")
+print("Hecho con ❤️ por [Skueletor](https://t.me/DKzippO)")
+print("Visite 🍃 AsAEcos")
 datgbot.run_until_disconnected()
