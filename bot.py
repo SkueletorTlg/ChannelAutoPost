@@ -38,7 +38,7 @@ except:
 @datgbot.on(events.NewMessage(pattern="/start"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi `{ok.user.first_name}`!\n\n¡Soy un bot de publicación automática de canales! ¡Lea /help para saber más!\n\nPuedo usar solo dos canales (un bot) a la vez para reenviar las publicaciones.\n\nBot creado y gestionado por [Skueletor](https://t.me/DKzippO)..", buttons=[Button.url("🍃 AsAEcos", url="http://t.me/AsAEcos"), Button.url("👤 Soporte", url="https://t.me/DKzippO")], link_preview=False)
+    await event.reply(f"¡Hola `{ok.user.first_name}`!\n\n¡Soy un bot de publicación automática de canales! ¡Lea /help para saber más!\n\nPuedo usar solo dos canales (un bot) a la vez para reenviar las publicaciones.\n\nBot creado y gestionado por [Skueletor](https://t.me/DKzippO)...", buttons=[Button.url("🍃 AsAEcos", url="http://t.me/AsAEcos"), Button.url("👤 Soporte", url="https://t.me/DKzippO")], link_preview=False)
 
 
 @datgbot.on(events.NewMessage(pattern="/help"))
@@ -70,6 +70,6 @@ async def _(event):
 
 
 print("El bot ha sido iniciado correctamente.")
-print("Hecho con ❤️ por [Skueletor](https://t.me/DKzippO)")
+print("Hecho con ❤️ por Skueletor")
 print("Visite 🍃 AsAEcos")
 datgbot.run_until_disconnected()
